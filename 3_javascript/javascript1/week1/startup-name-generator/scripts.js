@@ -24,9 +24,11 @@ const secondWords = [
   "BlueSwifty",
   "LevelLeap",
 ];
-
-const startupName = `${firstWords} ${secondWords}`;
-const randomNumber = Math.floor(Math.random() * startupName.length);
-console.log(
-  `The setup: "${randomNumber}" contains ${startupName[randomNumber]} characters`
-);
+const randomFirstWord =
+  firstWords[Math.floor(Math.random() * firstWords.length)];
+const randomSecondWord =
+  secondWords[Math.floor(Math.random() * secondWords.length)];
+const startupName = `The startup: ${randomFirstWord} ${randomSecondWord} contains ${
+  randomFirstWord.length + randomSecondWord.length
+} characters`;
+console.log(startupName);
