@@ -29,6 +29,24 @@ if (indexToRemove !== -1) {
 
 console.log(names);
 
+///// When will we be there?? /////
+
+function calculateTravelTime(travelInformation) {
+  const { speed, destinationDistance } = travelInformation;
+  const totalHours = destiscrnationDistance / speed;
+  const hours = Math.floor(totalHours);
+  const minutes = Math.round((totalHours - hours) * 60);
+  return `${hours} hours and ${minutes} minutes`;
+}
+
+const travelInformation = {
+  speed: 50,
+  destinationDistance: 432,
+};
+
+const travelTime = calculateTravelTime(travelInformation);
+console.log(travelTime); // This will print "8 hours and 38 minutes"
+
 ///// Series duration of my life /////
 const seriesDurations = [
   {
@@ -60,27 +78,26 @@ function calculatePercentageOfLife(seriesDurations) {
     const { days, hours, minutes } = series;
     const seriesMinutes = days * 24 * 60 + hours * 60 + minutes;
     totalMinutesSpentWatching += seriesMinutes;
+    const seriesPercentage = (seriesMinutes / totalMinutesInALife) * 100;
+    console.log(
+      `"${series.title}" is ${seriesPercentage.toFixed(3)}% of my life`
+    );
   }
 
-  const percentageOfLife =
+  const totalPercentage =
     (totalMinutesSpentWatching / totalMinutesInALife) * 100;
-  return percentageOfLife.toFixed(3); // Round to 3 decimal places
+  console.log(`In total, that is ${totalPercentage.toFixed(3)}% of my life`);
 }
 
-function logOutSeriesText() {
-  const totalPercentage = calculatePercentageOfLife(seriesDurations);
-  console.log(`In total that is ${totalPercentage}% of my life`);
-}
-
-logOutSeriesText();
+calculatePercentageOfLife(seriesDurations);
 
 ///// Save a note /////
 const notes = [];
 
 function saveNote(content, id) {
   const note = {
-    content: content,
-    id: id,
+    content,
+    id,
   };
   notes.push(note);
 }
